@@ -2,7 +2,7 @@ module.exports = function count(s, pairs) {
   let str = s.split('');
   let N = 1;
   let simple = [];
-  if (str.length > 10000) return false;
+  if (str.length > 10) return false;
   for (let i = 0; pairs.length > i; i++) {
     if (pairs[i][1] > 10) return false;
     let a = pairs[i][0];
@@ -10,6 +10,8 @@ module.exports = function count(s, pairs) {
     simple[i] = pairs[i][0];
     N = N * Math.pow(a, b);
   }
+//Заглушка
+  if (N > 100000000) return false;
 
   let simpleLength = simple.length;
   let allNumbers = '';
@@ -18,6 +20,7 @@ module.exports = function count(s, pairs) {
     let ifNotDivides = 0;
     
     for (let j = 0; simpleLength > j; j++) {
+      //console.log(i, i % simple[i]);
       if (i % simple[j] != 0) {
         ifNotDivides++;
       } 
@@ -31,12 +34,11 @@ module.exports = function count(s, pairs) {
 
   let count = 0;
   for (let i = 0; N > i; i++) {
-      let index = allNumbers.indexOf(s);
+      let v = allNumbers.indexOf(s);
       if (allNumbers.length > s.length) {
-        allNumbers = allNumbers.slice(index+str.length);
+        allNumbers = allNumbers.slice(v+str.length);
         count++;
-      } else break;
-      
+      } else break;     
   }
   return count;
 }
