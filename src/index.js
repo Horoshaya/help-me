@@ -35,7 +35,7 @@ module.exports = function count(s, pairs) {
   let count = 0;
   for (let i = 0; N > i; i++) {
       let v = allNumbers.indexOf(s);
-      if (allNumbers.length > s.length) {
+      if (allNumbers.length >= s.length && v >= 0) {
         allNumbers = allNumbers.slice(v+str.length);
         count++;
       } else break;     
