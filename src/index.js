@@ -1,8 +1,8 @@
 module.exports = function count(s, pairs) {
-  let str = s.split('');
-	let N = 1;
-	let simple = [];
-	let count = 0;
+  let str = s.split(''),
+			N = 1,
+			simple = [],
+			count = 0;
 
 	if (str.length > 10) return false; // Заглушка
 
@@ -11,8 +11,8 @@ module.exports = function count(s, pairs) {
 		simple[i] = pairs[i][0];
 		N = N * Math.pow(pairs[i][0], pairs[i][1]);
 	}
-	//Заглушка
-	if (N > 10000000000) return false;
+	
+	if (N > 10000000000) return false;//Заглушка
 
 	if (s.length == 1) {
 		count =  pairs.reduce((k, current) => k * (current[0] - 1), 1);		
